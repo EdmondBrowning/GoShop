@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_bar">
+    </FrameLayout>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/bottom_bar"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="7dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottom_background"
+            android:baselineAligned="true"
+            android:orientation="horizontal"
+            android:padding="2dp">
+
+            <LinearLayout
+                android:id="@+id/first"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/first_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/first"
+                    android:src="@drawable/ic_home_no_select" />
+
+                <TextView
+                    android:id="@+id/first_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/first"
+                    android:textSize="10sp"
+                    android:textColor="@color/noSelectColor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/second"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/second_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/second"
+                    android:src="@drawable/ic_around_no_select" />
+
+                <TextView
+                    android:id="@+id/second_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/second"
+                    android:textSize="10sp"
+                    android:textColor="@color/noSelectColor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/third"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/third_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/third"
+                    android:src="@drawable/ic_shopping_cart_no_select" />
+
+                <TextView
+                    android:id="@+id/third_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/third"
+                    android:textSize="10sp"
+                    android:textColor="@color/noSelectColor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/forth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/forth_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/forth"
+                    android:src="@drawable/ic_mine_no_select" />
+
+                <TextView
+                    android:id="@+id/forth_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/forth"
+                    android:textSize="10sp"
+                    android:textColor="@color/noSelectColor" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>
