@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GoShop.iml" filepath="$PROJECT_DIR$/GoShop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GoShop-android.iml" filepath="$PROJECT_DIR$/GoShop-android.iml" />
       <module fileurl="file://$PROJECT_DIR$/goshop/goshop.iml" filepath="$PROJECT_DIR$/goshop/goshop.iml" />
       <module fileurl="file://$PROJECT_DIR$/znview/znview.iml" filepath="$PROJECT_DIR$/znview/znview.iml" />
     </modules>
