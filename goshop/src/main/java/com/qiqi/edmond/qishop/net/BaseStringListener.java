@@ -1,7 +1,9 @@
 package com.qiqi.edmond.qishop.net;
 
-import com.qiqi.edmond.qishop.interfaces.net.StringListenerInterface;
+import android.util.Log;
+
 import com.google.gson.Gson;
+import com.qiqi.edmond.qishop.interfaces.net.StringListenerInterface;
 
 import java.lang.reflect.ParameterizedType;
 
@@ -12,6 +14,7 @@ import java.lang.reflect.ParameterizedType;
 public abstract class BaseStringListener<T> implements StringListenerInterface<T> {
     @Override
     public void format(int what,String response) {
+        Log.d("TAg",response);
         ParameterizedType parameterizedType = (ParameterizedType)this.getClass().getGenericSuperclass();
         Class<T> tClass= (Class<T>)(parameterizedType.getActualTypeArguments()[0]);
         Gson gson = new Gson();
