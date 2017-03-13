@@ -42,7 +42,7 @@ public class HomeModel extends BaseModel<HomeData> implements HomeModelInterface
 
             @Override
             public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-                exception.printStackTrace();
+                presenter.initError();
             }
 
             @Override
@@ -60,7 +60,7 @@ public class HomeModel extends BaseModel<HomeData> implements HomeModelInterface
         map.put("uid","1");
         map.put("token","");
 
-        StringNetWork stringNetWork = new StringNetWork(0, Api.HOME_MORE, new BaseStringListener<HomeData>() {
+        StringNetWork stringNetWork = new StringNetWork(0, Api.HOME_INIT, new BaseStringListener<HomeData>() {
             @Override
             public void onStart(int what) {
 
@@ -77,7 +77,7 @@ public class HomeModel extends BaseModel<HomeData> implements HomeModelInterface
 
             @Override
             public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-                exception.printStackTrace();
+                presenter.refreshError();
             }
 
             @Override
@@ -96,7 +96,7 @@ public class HomeModel extends BaseModel<HomeData> implements HomeModelInterface
         map.put("token","");
         map.put("lastId","1");
 
-        StringNetWork stringNetWork = new StringNetWork(0, "http://10.248.124.160:8000/mobile/home_more", new BaseStringListener<HomeInfoMore>() {
+        StringNetWork stringNetWork = new StringNetWork(0, Api.HOME_MORE, new BaseStringListener<HomeInfoMore>() {
             @Override
             public void onStart(int what) {
 
@@ -110,7 +110,7 @@ public class HomeModel extends BaseModel<HomeData> implements HomeModelInterface
 
             @Override
             public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-                exception.printStackTrace();
+                presenter.loadMoreError();
             }
 
             @Override

@@ -57,7 +57,7 @@ public class MineModel extends BaseModel<MineData> implements MineModelInterface
 
             }
         },null);
-        stringNetWork.doIt();
+//        stringNetWork.doIt();
     }
 
     @Override
@@ -83,6 +83,6 @@ public class MineModel extends BaseModel<MineData> implements MineModelInterface
 
             }
         },null);
-        stringNetWork.doIt();
+//        stringNetWork.doIt();
     }
 }

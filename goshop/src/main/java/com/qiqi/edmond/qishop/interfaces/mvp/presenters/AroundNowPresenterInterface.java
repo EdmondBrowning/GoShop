@@ -12,10 +12,13 @@ import java.util.List;
 public interface AroundNowPresenterInterface {
     void initing();
     void inited(AroundNowData result);
+    void initError();
 
     void refreshing();
     void refreshed(AroundNowData result);
+    void refeshError();
 
     void loadMoring();
     void loadMored(List<AroundNowInfo> result);
+    void loadMoreError();
 }

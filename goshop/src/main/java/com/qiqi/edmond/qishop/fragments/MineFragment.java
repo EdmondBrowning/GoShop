@@ -23,6 +23,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.qiqi.edmond.qishop.R;
@@ -238,6 +239,11 @@ public class MineFragment extends Fragment implements MineViewInterface{
     }
 
     @Override
+    public void initError() {
+        Toast.makeText(activity,"好像出了点问题",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void refreshing() {
 
     }
@@ -246,6 +252,12 @@ public class MineFragment extends Fragment implements MineViewInterface{
     public void refreshed(MineData result) {
         swipeRefreshLayout.setRefreshing(false);
         inited(result);
+    }
+
+    @Override
+    public void refreshError() {
+        swipeRefreshLayout.setRefreshing(false);
+        Toast.makeText(activity,"好像出了点问题",Toast.LENGTH_SHORT).show();
     }
 
     private static class ToolAdapter extends RecyclerView.Adapter<ViewHolder> {

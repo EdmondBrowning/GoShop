@@ -12,10 +12,13 @@ import java.util.List;
 public interface AroundWillPresenterInterface {
     void initing();
     void inited(AroundWillData result);
+    void initError();
 
     void refreshing();
     void refreshed(AroundWillData result);
+    void refreshError();
 
     void loadMoring();
     void loadMored(List<AroundWillInfo> result);
+    void loadMoreError();
 }

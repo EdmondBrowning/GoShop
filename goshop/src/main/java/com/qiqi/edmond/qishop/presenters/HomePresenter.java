@@ -39,6 +39,11 @@ public class HomePresenter extends BasePresenter<HomeFragment,HomeModel> impleme
     }
 
     @Override
+    public void initError() {
+        getView().initError();
+    }
+
+    @Override
     public void refreshing() {
         getView().refreshing();
         getModel().refresh(this);
@@ -55,6 +60,11 @@ public class HomePresenter extends BasePresenter<HomeFragment,HomeModel> impleme
     }
 
     @Override
+    public void refreshError() {
+        getView().refreshError();
+    }
+
+    @Override
     public void loadMoring() {
         getView().loadMoring();
         getModel().loadMore(this);
@@ -68,5 +78,10 @@ public class HomePresenter extends BasePresenter<HomeFragment,HomeModel> impleme
             Log.d(TAG,"view is null");
             System.gc();
         }
+    }
+
+    @Override
+    public void loadMoreError() {
+        getView().loadMoreError();
     }
 }

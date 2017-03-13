@@ -9,6 +9,8 @@ import com.qiqi.edmond.qishop.presenters.AroundWillPresenter;
 import com.qiqi.edmond.qishop.utils.AroundWillData;
 import com.qiqi.edmond.qishop.utils.AroundWillInfoMore;
 
+import java.util.HashMap;
+
 /**
  * Created by edmond on 17-2-21.
  */
@@ -88,6 +90,11 @@ public class AroundWillModel extends BaseModel<AroundWillData> implements Around
 //        getData().getAroundWillInfos().add(info3);
 //        getData().getAroundWillInfos().add(info4);
 //        getData().getAroundWillInfos().add(info5);
+
+        HashMap<String,String> map = new HashMap<>();
+        map.put("uid","");
+        map.put("token","");
+
         StringNetWork stringNetWork = new StringNetWork(0, Api.AROUND_WILL_INIT, new BaseStringListener<AroundWillData>() {
             @Override
             public void onStart(int what) {
@@ -96,19 +103,21 @@ public class AroundWillModel extends BaseModel<AroundWillData> implements Around
 
             @Override
             public void onSucceed(int what, AroundWillData response) {
+                getData().getAroundWillInfos().addAll(response.getAroundWillInfos());
+                getData().setLastId(response.getLastId());
                 presenter.inited(getData());
             }
 
             @Override
             public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-
+                presenter.initError();
             }
 
             @Override
             public void onFinish(int what) {
 
             }
-        },null);
+        },map);
 
         stringNetWork.doIt();
     }
@@ -189,6 +198,11 @@ public class AroundWillModel extends BaseModel<AroundWillData> implements Around
 //        getData().getAroundWillInfos().add(info4);
 //        getData().getAroundWillInfos().add(info5);
 //        presenter.refreshed(getData());
+
+        HashMap<String,String> map = new HashMap<>();
+        map.put("uid","");
+        map.put("token","");
+
         StringNetWork stringNetWork = new StringNetWork(0, Api.AROUND_WILL_INIT, new BaseStringListener<AroundWillData>() {
             @Override
             public void onStart(int what) {
@@ -202,20 +216,24 @@ public class AroundWillModel extends BaseModel<AroundWillData> implements Around
 
             @Override
             public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-
+                presenter.refreshError();
             }
 
             @Override
             public void onFinish(int what) {
 
             }
-        },null);
+        },map);
 
         stringNetWork.doIt();
     }
 
     @Override
     public void loadMore(final AroundWillPresenter presenter) {
+        HashMap<String,String> map = new HashMap<>();
+        map.put("uid","");
+        map.put("token","");
+        map.put("lastId","");
         StringNetWork stringNetWork = new StringNetWork(0, Api.AROUND_WILL_MORE, new BaseStringListener<AroundWillInfoMore>() {
             @Override
             public void onStart(int what) {
@@ -229,14 +247,14 @@ public class AroundWillModel extends BaseModel<AroundWillData> implements Around
 
             @Override
             public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-
+                presenter.loadMoreError();
             }
 
             @Override
             public void onFinish(int what) {
 
             }
-        },null);
+        },map);
 
         stringNetWork.doIt();
     }

@@ -9,7 +9,9 @@ import com.qiqi.edmond.qishop.utils.MineData;
 public interface MinePresenterInterface {
     void initing();
     void inited(MineData result);
+    void initError();
 
     void refreshing();
     void refreshed(MineData result);
+    void refreshError();
 }

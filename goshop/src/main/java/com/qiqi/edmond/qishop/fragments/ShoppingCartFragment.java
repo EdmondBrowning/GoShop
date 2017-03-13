@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.qiqi.edmond.qishop.R;
 import com.qiqi.edmond.qishop.adapters.recyclerview.ShoppingCartAdapter;
@@ -202,6 +203,11 @@ public class ShoppingCartFragment extends Fragment implements ShoppingCartViewIn
     }
 
     @Override
+    public void initError() {
+        Toast.makeText(activity,"好像出了点问题",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void refreshing() {
 
     }
@@ -213,5 +219,11 @@ public class ShoppingCartFragment extends Fragment implements ShoppingCartViewIn
         data.clear();
         data.addAll(result.getShoppingCartInfos());
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void refreshError() {
+        swipeRefreshLayout.setRefreshing(false);
+        Toast.makeText(activity,"好像出了点问题",Toast.LENGTH_SHORT).show();
     }
 }

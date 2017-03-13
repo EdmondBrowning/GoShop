@@ -27,6 +27,11 @@ public class MinePresenter extends BasePresenter<MineFragment,MineModel> impleme
     }
 
     @Override
+    public void initError() {
+
+    }
+
+    @Override
     public void refreshing() {
         getView().refreshing();
         getModel().refresh(this);
@@ -35,5 +40,10 @@ public class MinePresenter extends BasePresenter<MineFragment,MineModel> impleme
     @Override
     public void refreshed(MineData result) {
         getView().refreshed(result);
+    }
+
+    @Override
+    public void refreshError() {
+
     }
 }

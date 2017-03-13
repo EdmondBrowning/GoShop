@@ -147,7 +147,7 @@ public class ShoppingCartModel extends BaseModel<ShoppingCartData> implements Sh
             }
         },null);
 
-        stringNetWork.doIt();
+//        stringNetWork.doIt();
     }
 
     @Override
@@ -285,6 +285,6 @@ public class ShoppingCartModel extends BaseModel<ShoppingCartData> implements Sh
 
             }
         },null);
-        stringNetWork.doIt();
+//        stringNetWork.doIt();
     }
 }

@@ -30,6 +30,11 @@ public class AroundNowPresenter extends BasePresenter<AroundNowFragment,AroundNo
     }
 
     @Override
+    public void initError() {
+        getView().initError();
+    }
+
+    @Override
     public void refreshing() {
         getView().refreshing();
         getModel().refresh(this);
@@ -41,6 +46,11 @@ public class AroundNowPresenter extends BasePresenter<AroundNowFragment,AroundNo
     }
 
     @Override
+    public void refeshError() {
+        getView().refreshError();
+    }
+
+    @Override
     public void loadMoring() {
         getView().loadMoring();
         getModel().loadMore(this);
@@ -49,5 +59,10 @@ public class AroundNowPresenter extends BasePresenter<AroundNowFragment,AroundNo
     @Override
     public void loadMored(List<AroundNowInfo> result) {
         getView().loadMored(result);
+    }
+
+    @Override
+    public void loadMoreError() {
+        getView().loadMoreError();
     }
 }

@@ -12,10 +12,13 @@ import java.util.List;
 public interface HomePresenterInterface {
     void initing();
     void inited(HomeData result);
+    void initError();
 
     void refreshing();
     void refreshed(HomeData result);
+    void refreshError();
 
     void loadMoring();
     void loadMored(List<HomeInfo> result);
+    void loadMoreError();
 }

@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.qiqi.edmond.qishop.R;
 import com.qiqi.edmond.qishop.adapters.recyclerview.AroundWillAdapter;
@@ -110,6 +111,11 @@ public class AroundWillFragment extends Fragment implements AroundWillViewInterf
     }
 
     @Override
+    public void initError() {
+        Toast.makeText(activity,"好像出了点问题",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void refreshing() {
 
     }
@@ -123,6 +129,12 @@ public class AroundWillFragment extends Fragment implements AroundWillViewInterf
     }
 
     @Override
+    public void refreshError() {
+        swipeRefreshLayout.setRefreshing(false);
+        Toast.makeText(activity,"好像出了点问题",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void loadMoring() {
 
     }
@@ -132,6 +144,11 @@ public class AroundWillFragment extends Fragment implements AroundWillViewInterf
         Log.d("","lo");
         data.getAroundWillInfos().addAll(result);
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void loadMoreError() {
+        Toast.makeText(activity,"好像出了点问题",Toast.LENGTH_SHORT).show();
     }
 
     @Override

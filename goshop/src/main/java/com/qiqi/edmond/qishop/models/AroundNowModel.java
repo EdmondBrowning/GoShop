@@ -9,6 +9,8 @@ import com.qiqi.edmond.qishop.presenters.AroundNowPresenter;
 import com.qiqi.edmond.qishop.utils.AroundNowData;
 import com.qiqi.edmond.qishop.utils.AroundNowInfoMore;
 
+import java.util.HashMap;
+
 /**
  * Created by edmond on 17-2-21.
  */
@@ -90,6 +92,10 @@ public class AroundNowModel extends BaseModel<AroundNowData> implements AroundNo
 //        getData().getAroundNowInfos().add(info5);
 //        presenter.inited(getData());
 
+        HashMap<String,String> map = new HashMap<>();
+        map.put("uid","");
+        map.put("token","");
+
         StringNetWork stringNetWork = new StringNetWork(0, Api.AROUND_NOW_INIT, new BaseStringListener<AroundNowData>() {
             @Override
             public void onStart(int what) {
@@ -98,19 +104,21 @@ public class AroundNowModel extends BaseModel<AroundNowData> implements AroundNo
 
             @Override
             public void onSucceed(int what, AroundNowData response) {
+                getData().getAroundNowInfos().addAll(response.getAroundNowInfos());
+                getData().setLastId(response.getLastId());
                 presenter.inited(getData());
             }
 
             @Override
             public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-
+                presenter.initError();
             }
 
             @Override
             public void onFinish(int what) {
 
             }
-        },null);
+        },map);
 
         stringNetWork.doIt();
     }
@@ -192,6 +200,10 @@ public class AroundNowModel extends BaseModel<AroundNowData> implements AroundNo
 //        getData().getAroundNowInfos().add(info5);
 //        presenter.refreshed(getData());
 
+        HashMap<String,String> map = new HashMap<>();
+        map.put("uid","");
+        map.put("token","");
+
         StringNetWork stringNetWork = new StringNetWork(0, Api.AROUND_NOW_INIT, new BaseStringListener<AroundNowData>() {
             @Override
             public void onStart(int what) {
@@ -205,14 +217,14 @@ public class AroundNowModel extends BaseModel<AroundNowData> implements AroundNo
 
             @Override
             public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-
+                presenter.refeshError();
             }
 
             @Override
             public void onFinish(int what) {
 
             }
-        },null);
+        },map);
 
         stringNetWork.doIt();
     }
@@ -228,6 +240,11 @@ public class AroundNowModel extends BaseModel<AroundNowData> implements AroundNo
 //        getData().getAroundNowInfos().addAll(aroundNowInfos);
 //        presenter.loadMored(aroundNowInfos);
 
+        HashMap<String,String> map = new HashMap<>();
+        map.put("uid","");
+        map.put("token","");
+        map.put("lastId","");
+
         StringNetWork stringNetWork = new StringNetWork(0, Api.AROUND_NOW_MORE, new BaseStringListener<AroundNowInfoMore>() {
             @Override
             public void onStart(int what) {
@@ -241,14 +258,14 @@ public class AroundNowModel extends BaseModel<AroundNowData> implements AroundNo
 
             @Override
             public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-
+                presenter.loadMoreError();
             }
 
             @Override
             public void onFinish(int what) {
 
             }
-        },null);
+        },map);
 
         stringNetWork.doIt();
     }

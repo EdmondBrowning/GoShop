@@ -12,10 +12,13 @@ import java.util.List;
 public interface AroundPastViewInterface {
     void initing();
     void inited(AroundPastData result);
+    void initError();
 
     void refreshing();
     void refreshed(AroundPastData result);
+    void refreshError();
 
     void loadMoring();
     void loadMored(List<AroundPastInfo> result);
+    void loadMoreError();
 }

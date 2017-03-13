@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.qiqi.edmond.qishop.R;
@@ -139,6 +140,11 @@ public class HomeFragment extends Fragment implements HomeViewInterface{
     }
 
     @Override
+    public void initError() {
+        Toast.makeText(activity,"好像出了点问题",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void refreshing() {
         Log.d(TAG,"refresh");
     }
@@ -160,6 +166,12 @@ public class HomeFragment extends Fragment implements HomeViewInterface{
     }
 
     @Override
+    public void refreshError() {
+        swipeRefreshLayout.setRefreshing(false);
+        Toast.makeText(activity,"好像出了点问题",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void loadMoring() {
         Log.d(TAG,"More");
     }
@@ -168,5 +180,10 @@ public class HomeFragment extends Fragment implements HomeViewInterface{
     public void loadMored(List<HomeInfo> result) {
         data.addAll(result);
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void loadMoreError() {
+        Toast.makeText(activity,"好像出了点问题",Toast.LENGTH_SHORT).show();
     }
 }
