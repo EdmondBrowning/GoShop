@@ -28,7 +28,7 @@ public class ShoppingCartPresenter extends BasePresenter<ShoppingCartFragment,Sh
 
     @Override
     public void initError() {
-
+        getView().initError();
     }
 
     @Override
@@ -44,6 +44,6 @@ public class ShoppingCartPresenter extends BasePresenter<ShoppingCartFragment,Sh
 
     @Override
     public void refreshError() {
-
+        getView().refreshError();
     }
 }

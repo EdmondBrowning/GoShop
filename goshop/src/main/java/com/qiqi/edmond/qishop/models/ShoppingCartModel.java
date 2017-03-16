@@ -138,7 +138,7 @@ public class ShoppingCartModel extends BaseModel<ShoppingCartData> implements Sh
 
             @Override
             public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-
+                presenter.initError();
             }
 
             @Override
@@ -147,7 +147,7 @@ public class ShoppingCartModel extends BaseModel<ShoppingCartData> implements Sh
             }
         },null);
 
-//        stringNetWork.doIt();
+        stringNetWork.doIt();
     }
 
     @Override
@@ -277,7 +277,7 @@ public class ShoppingCartModel extends BaseModel<ShoppingCartData> implements Sh
 
             @Override
             public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-
+                presenter.refreshError();
             }
 
             @Override
@@ -285,6 +285,6 @@ public class ShoppingCartModel extends BaseModel<ShoppingCartData> implements Sh
 
             }
         },null);
-//        stringNetWork.doIt();
+        stringNetWork.doIt();
     }
 }

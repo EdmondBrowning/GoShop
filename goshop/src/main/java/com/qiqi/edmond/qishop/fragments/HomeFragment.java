@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +21,6 @@ import com.qiqi.edmond.qishop.R;
 import com.qiqi.edmond.qishop.adapters.recyclerview.HomeAdapter;
 import com.qiqi.edmond.qishop.interfaces.mvp.views.HomeViewInterface;
 import com.qiqi.edmond.qishop.presenters.HomePresenter;
-import com.qiqi.edmond.qishop.tool.MathTools;
 import com.qiqi.edmond.qishop.utils.HomeInfo;
 import com.qiqi.edmond.qishop.utils.HomeData;
 import com.qiqi.xznview.layout.XZBannerLayout;
@@ -53,6 +52,9 @@ public class HomeFragment extends Fragment implements HomeViewInterface{
     private List<HomeInfo> data = new ArrayList<>();
 
     private GridLayoutManager layoutManager;
+
+    private AlertDialog.Builder builder = null;
+    private AlertDialog dialog = null;
 
     @Nullable
     @Override
@@ -121,6 +123,10 @@ public class HomeFragment extends Fragment implements HomeViewInterface{
 
     @Override
     public void initing() {
+        builder = new AlertDialog.Builder(this.getContext());
+        View d = LayoutInflater.from(activity).inflate(R.layout.dialog_loading,null);
+        dialog = builder.setView(d).create();
+        dialog.show();
         Log.d(TAG,"init");
     }
 
@@ -137,10 +143,14 @@ public class HomeFragment extends Fragment implements HomeViewInterface{
                 .crossFade()
                 .placeholder(com.qiqi.xznview.R.mipmap.ic_launcher)
                 .into(imageView);
+
+        dialog.dismiss();
+        footer.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void initError() {
+        dialog.dismiss();
         Toast.makeText(activity,"好像出了点问题",Toast.LENGTH_SHORT).show();
     }
 

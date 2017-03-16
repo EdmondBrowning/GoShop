@@ -175,6 +175,13 @@ public class ShoppingCartFragment extends Fragment implements ShoppingCartViewIn
         return view;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenter.onDestroy();
+        presenter = null;
+    }
+
     private void isCheck(){
         int j = 0;
         for(;j<data.size();j++){

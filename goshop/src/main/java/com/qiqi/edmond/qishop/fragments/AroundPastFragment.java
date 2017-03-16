@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -45,6 +46,8 @@ public class AroundPastFragment extends Fragment implements AroundPastViewInterf
 
     private StaggeredGridLayoutManager layoutManager;
 
+    private boolean isLoadMore = false;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -58,7 +61,7 @@ public class AroundPastFragment extends Fragment implements AroundPastViewInterf
         adapter = new AroundPastAdapter(activity,data.getAroundPastInfos(),footer);
         adapter.setOnItemClickListener(this);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false));
+        recyclerView.setLayoutManager(new GridLayoutManager(activity,1));
         recyclerView.setAdapter(adapter);
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -71,7 +74,7 @@ public class AroundPastFragment extends Fragment implements AroundPastViewInterf
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 int lastItemPosition= ((LinearLayoutManager) recyclerView.getLayoutManager()).findLastVisibleItemPosition();
-                if(lastItemPosition==data.getAroundPastInfos().size()){
+                if(lastItemPosition==data.getAroundPastInfos().size()&&isLoadMore){
                     presenter.loadMoring();
                 }
             }
@@ -108,6 +111,7 @@ public class AroundPastFragment extends Fragment implements AroundPastViewInterf
         data.getAroundPastInfos().clear();
         data.getAroundPastInfos().addAll(result.getAroundPastInfos());
         adapter.notifyDataSetChanged();
+        isLoadMore = true;
     }
 
     @Override

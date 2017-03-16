@@ -49,7 +49,7 @@ public class MineModel extends BaseModel<MineData> implements MineModelInterface
 
             @Override
             public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-
+                presenter.initError();
             }
 
             @Override
@@ -57,7 +57,7 @@ public class MineModel extends BaseModel<MineData> implements MineModelInterface
 
             }
         },null);
-//        stringNetWork.doIt();
+        stringNetWork.doIt();
     }
 
     @Override
@@ -75,7 +75,7 @@ public class MineModel extends BaseModel<MineData> implements MineModelInterface
 
             @Override
             public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
-
+                presenter.refreshError();
             }
 
             @Override
@@ -83,6 +83,6 @@ public class MineModel extends BaseModel<MineData> implements MineModelInterface
 
             }
         },null);
-//        stringNetWork.doIt();
+        stringNetWork.doIt();
     }
 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -44,6 +45,8 @@ public class AroundNowFragment extends Fragment implements AroundNowViewInterfac
 
     private LinearLayoutManager layoutManager;
 
+    private boolean isLoadMore = false;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -57,7 +60,7 @@ public class AroundNowFragment extends Fragment implements AroundNowViewInterfac
         adapter = new AroundNowAdapter(activity,data.getAroundNowInfos(),footer);
         adapter.setOnItemClickListener(this);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        layoutManager = new LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false);
+        layoutManager = new GridLayoutManager(activity,1);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
@@ -71,7 +74,7 @@ public class AroundNowFragment extends Fragment implements AroundNowViewInterfac
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 int lastItemPosition= ((LinearLayoutManager) recyclerView.getLayoutManager()).findLastVisibleItemPosition();
-                if(lastItemPosition==data.getAroundNowInfos().size()){
+                if(lastItemPosition==data.getAroundNowInfos().size()&&isLoadMore){
                     presenter.loadMoring();
                 }
             }
@@ -108,6 +111,7 @@ public class AroundNowFragment extends Fragment implements AroundNowViewInterfac
         data.getAroundNowInfos().clear();
         data.getAroundNowInfos().addAll(result.getAroundNowInfos());
         adapter.notifyDataSetChanged();
+        isLoadMore = true;
     }
 
     @Override
