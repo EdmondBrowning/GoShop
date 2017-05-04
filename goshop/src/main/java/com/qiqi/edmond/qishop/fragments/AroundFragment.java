@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.qiqi.edmond.qishop.R;
-import com.qiqi.edmond.qishop.adapters.viewpager.MyPagerAdapter;
+import com.qiqi.xznview.adapter.MyPagerAdapter;
 import com.qiqi.edmond.qishop.interfaces.mvp.views.AroundViewInterface;
 import com.qiqi.xznview.layout.XZIndicator;
 

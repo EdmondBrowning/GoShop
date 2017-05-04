@@ -5,7 +5,7 @@ package com.qiqi.edmond.qishop.net;
  */
 
 public class Api {
-    public final static String HEAD = "http://10.248.124.160:8000";
+    public final static String HEAD = "http://192.168.0.110:8000";
 
     public final static String HOME_INIT = HEAD+"/mobile/home/init";
     public final static String HOME_MORE = HEAD+"/mobile/home/more";

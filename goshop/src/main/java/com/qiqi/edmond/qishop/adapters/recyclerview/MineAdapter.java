@@ -22,13 +22,11 @@ import java.util.List;
 public class MineAdapter extends BaseHeaderFooterAdapter<HomeInfo> {
     private View header;
     private View footer;
-    private LayoutInflater inflater;
 
     public MineAdapter(Context context, List<HomeInfo> data,View header,View footer) {
         super(context, data);
         this.header = header;
         this.footer = footer;
-        this.inflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -53,7 +51,7 @@ public class MineAdapter extends BaseHeaderFooterAdapter<HomeInfo> {
 
     @Override
     public BaseItem initItem(ViewGroup parent) {
-        View view = inflater.inflate(R.layout.item_home,parent,false);
+        View view = getInflater().inflate(R.layout.item_home,parent,false);
         return new MyHeader(view);
     }
 

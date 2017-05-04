@@ -8,12 +8,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -51,7 +53,7 @@ public class HomeFragment extends Fragment implements HomeViewInterface{
 
     private List<HomeInfo> data = new ArrayList<>();
 
-    private GridLayoutManager layoutManager;
+    private LinearLayoutManager layoutManager;
 
     private AlertDialog.Builder builder = null;
     private AlertDialog dialog = null;
@@ -76,7 +78,7 @@ public class HomeFragment extends Fragment implements HomeViewInterface{
 
 //        layoutManager = new StaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL);
 //        layoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
-        layoutManager = new GridLayoutManager(activity,spanCount);
+        layoutManager = new LinearLayoutManager(activity);
         recyclerView.setLayoutManager(layoutManager);
         adapter = new HomeAdapter(activity,data,header,footer);
         recyclerView.setAdapter(adapter);
@@ -94,10 +96,12 @@ public class HomeFragment extends Fragment implements HomeViewInterface{
 //                int[] lastItemPositions = null;
 //                lastItemPositions = ((StaggeredGridLayoutManager) recyclerView.getLayoutManager()).findLastVisibleItemPositions(lastItemPositions);
 //                int lastItemPosition = MathTools.findMax(lastItemPositions);
-                int lastItemPosition = ((GridLayoutManager)recyclerView.getLayoutManager()).findLastVisibleItemPosition();
-                if(lastItemPosition==data.size()){
-                    presenter.loadMoring();
-                }
+
+
+//                int lastItemPosition = ((GridLayoutManager)recyclerView.getLayoutManager()).findLastVisibleItemPosition();
+//                if(lastItemPosition==data.size()){
+//                    presenter.loadMoring();
+//                }
             }
         });
 

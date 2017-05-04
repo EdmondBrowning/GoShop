@@ -3,6 +3,8 @@ package com.qiqi.edmond.qishop.presenters;
 import android.util.Log;
 
 import com.qiqi.edmond.qishop.fragments.HomeFragment;
+import com.qiqi.edmond.qishop.interfaces.mvp.models.HomeModelInterface;
+import com.qiqi.edmond.qishop.interfaces.mvp.views.HomeViewInterface;
 import com.qiqi.edmond.qishop.models.HomeModel;
 import com.qiqi.edmond.qishop.presenters.base.BasePresenter;
 import com.qiqi.edmond.qishop.interfaces.mvp.presenters.HomePresenterInterface;
@@ -15,7 +17,7 @@ import java.util.List;
  * Created by edmond on 17-1-15.
  */
 
-public class HomePresenter extends BasePresenter<HomeFragment,HomeModel> implements HomePresenterInterface {
+public class HomePresenter extends BasePresenter<HomeViewInterface,HomeModel> implements HomePresenterInterface {
     private String TAG = "HomePresenter";
 
     public HomePresenter(HomeFragment view) {
